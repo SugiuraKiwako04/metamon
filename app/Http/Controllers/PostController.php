@@ -20,7 +20,7 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('posts.create');
+        return view('posts/create');
     }
 
     public function store(Post $post, PostRequest $request) 
@@ -40,6 +40,12 @@ class PostController extends Controller
     $input_post = $request['post'];
     $post->fill($input_post)->save();
     return redirect('/posts/' . $post->id);
+    }
+    
+    public function delete(Post $post)
+    {
+    $post->delete();
+    return redirect('/');
     }
     
 }
